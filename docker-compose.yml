@@ -1,0 +1,14 @@
+version: "2"
+services:
+  node:
+    image: node:8
+    user: "node"
+    working_dir: /home/node/app
+    restart: always
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./data:/home/node/app
+    ports:
+      - "7380:3000"
+    command: /bin/bash -c "DEBUG=express-exp npm start"
